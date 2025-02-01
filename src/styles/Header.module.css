@@ -1,0 +1,15 @@
+.header {
+	@apply
+	fixed
+	top-0
+	left-0
+	right-0
+	bg-white
+	flex
+	justify-between
+	items-center
+	h-[70px]
+	py-[20px]
+	px-[50px]
+	;
+}

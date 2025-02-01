@@ -1,0 +1,22 @@
+import { FC } from "react";
+import styles from '@/styles/Header.module.css';
+import Image from "next/image";
+import Link from "next/link";
+import Button from "@/components/Button";
+
+const Header: FC = () => {
+	return (
+		<div className={ styles.header }>
+			<div className={ styles.header__logo_container }>
+				<Link href='/'>
+					<Image src='/logo.png' alt="Logo" width={115} height={31} />
+				</Link>
+			</div>
+			<div className={ styles.header__button_container }>
+				<Button authorization>Зареєструватись</Button>
+			</div>
+		</div>
+	)
+};
+
+export default Header;

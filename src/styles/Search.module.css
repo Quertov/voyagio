@@ -1,0 +1,60 @@
+.hero__container {
+	@apply
+	rounded-md
+	h-[500px]
+	max-w-full
+	mt-[100px]
+	flex
+	justify-center
+	items-center
+	flex-col
+	;
+	background-image: url('/search.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.hero__inner {
+	@apply
+	flex
+	flex-col
+	;
+}
+
+.hero__title_container {
+	@apply
+	mb-[15px]
+	;
+}
+
+.hero__title {
+	@apply
+	text-white
+	text-[36px]
+	font-bold
+	;
+	/* font-family: Arial, Helvetica, sans-serif;
+	-webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
+}
+
+.search__container {
+	@apply
+	w-[890px]
+	h-[50px]
+	;
+}
+
+.search {
+	@apply
+	rounded-2xl
+	text-black
+	text-[20px]
+	outline-none
+	w-full
+	h-full
+	px-[16px]
+	py-[13px]
+	;
+}
