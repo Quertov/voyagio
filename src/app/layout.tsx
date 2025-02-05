@@ -13,6 +13,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Voyagio",
   description: "One step for you trip",
+  icons: '/icon.png'
 };
 
 export default function RootLayout({

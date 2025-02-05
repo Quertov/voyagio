@@ -7,7 +7,7 @@ interface ButtonProps {
 };
 
 const Button: FC<ButtonProps> = ({ children, authorization }) => {
-	var buttonWidth = useMemo(() => (
+	const buttonWidth = useMemo(() => (
 		authorization ? 'w-[170px]' : 'w-[250px]'
 	), [authorization]);
 			
