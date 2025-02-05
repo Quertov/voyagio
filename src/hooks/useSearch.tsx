@@ -9,7 +9,6 @@ export const useSearch = () => {
 
 	const fetchData = useCallback(async (query: string) => {
 		setLoading(true);
-
 		try {
 			var apiKey = process.env.NEXT_PUBLIC_API_KEY;
 			if (!apiKey) {
@@ -31,6 +30,7 @@ export const useSearch = () => {
 			console.log('Error fetching data: ' + error);
 		} finally {
 			setLoading(false);
+			redirect('/results');
 		}
 	}, []);
 
