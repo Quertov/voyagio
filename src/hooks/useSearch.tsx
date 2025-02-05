@@ -15,7 +15,7 @@ export const useSearch = () => {
 				throw new Error('Api key is not defined');
 			}
 			const url = `https://api.foursquare.com/v3/places/search?categories=16000&near=${query}&limit=50`;
-			const options: Object = {
+			const options: object = {
 				method: 'GET',
 				headers: {
 					'Accept': 'application/json',
