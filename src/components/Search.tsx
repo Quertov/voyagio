@@ -1,17 +1,37 @@
 'use client';
 
-import { FC } from "react";
 import styles from '@/styles/Search.module.css';
-import { useSearch } from "@/hooks/useSearch";
+import { FC, useCallback } from "react";
+import { fetchPlaces } from "@/hooks/useSearch";
+import { useDispatch } from "react-redux";
+import { setPlaces, setLoading, setError } from "@/store/slices/searchSlice";
+import { useRouter } from "next/navigation";
 
 const Search: FC = () => {
-	const { fetchData } = useSearch();
+	const dispatch = useDispatch();
+	const router = useRouter();
 
-	const keyDownHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+	const keyDownHandler = useCallback(async (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key !== 'Enter') return;
+
 		const query: string = (event.target as HTMLInputElement).value.trim().toLowerCase();
-		fetchData(query);
-	}
+		if (!query) return;
+
+		try {
+			dispatch(setLoading(true));
+
+			const places = await fetchPlaces(query);
+			console.log(places.results);
+			dispatch(setPlaces(places.results));
+			router.push('/results');
+		} catch (error) {
+			dispatch(setLoading(false));
+			dispatch(setError(true));
+		} finally {
+			dispatch(setLoading(false));
+			dispatch(setError(false));
+		}
+	}, []);
 
 	return (
 		<main className={ styles.hero__container }>

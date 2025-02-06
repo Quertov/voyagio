@@ -1,5 +1,6 @@
-import styles from '@/styles/Home.module.css';
+'use client';
 
+import styles from '@/styles/Home.module.css';
 import Search from "@/components/Search";
 
 export default function Home() {

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Roboto } from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/Header";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 const roboto = Roboto({
   variable: '--roboto-font',
@@ -24,8 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} antialiased`}>
-        <Header />
-        {children}
+        <Provider store={ store }>
+          <Header />
+          {children}
+        </Provider>
       </body>
     </html>
   );
