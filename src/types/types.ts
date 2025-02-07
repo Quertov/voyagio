@@ -1,28 +1,29 @@
-interface ICategories {
+export interface ICategory {
 	name: string
 };
 
-interface ILocation {
+export interface ILocation {
 	address: string,
 	formattedAddress: string,
-	contry: string,
+	country: string,
 	locality: string,
 	region: string
 };
 
-interface IGeocodes {
+export interface IGeocodes {
 	latitude: number,
-	longtitude: number,
+	longitude: number,
 };
 
-interface IRelatedPlace {
-	categories: ICategories[],
+export interface IRelatedPlace {
+	categories: ICategory[],
 	fsqId: string,
 	name: string,
 };
 
 export interface IPlace {
-	categories: ICategories[],
+	categories: ICategory[],
+	name: string,
 	closedBucket: string,
 	fsqId: string,
 	location: ILocation,
@@ -34,4 +35,8 @@ export interface IPlace {
 	relatedPlaces: {
 		children: IRelatedPlace[]
 	}
+};
+
+export interface IResponse {
+	results: IPlace[]
 };

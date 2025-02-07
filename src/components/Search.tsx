@@ -1,37 +1,36 @@
 'use client';
 
 import styles from '@/styles/Search.module.css';
-import { FC, useCallback } from "react";
-import { fetchPlaces } from "@/hooks/useSearch";
-import { useDispatch } from "react-redux";
-import { setPlaces, setLoading, setError } from "@/store/slices/searchSlice";
-import { useRouter } from "next/navigation";
+import { FC, useCallback, useMemo, useState } from "react";
+import { useSearch } from "@/hooks/useSearch";
 
 const Search: FC = () => {
-	const dispatch = useDispatch();
-	const router = useRouter();
+	const { fetchPlaces } = useSearch();
+	const [isEnglishQuery, setEnglishQuery] = useState<boolean>(true);
+	const [query, setQuery] = useState<string>('');
+	const [isQueryEmptry, setQueryEmpty] = useState<boolean>(false);
 
-	const keyDownHandler = useCallback(async (event: React.KeyboardEvent<HTMLInputElement>) => {
+	const keyDownHandler = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key !== 'Enter') return;
 
-		const query: string = (event.target as HTMLInputElement).value.trim().toLowerCase();
 		if (!query) return;
+		const isEnglish = /^[a-zA-Z\s]+$/.test(query);
+		if (!isEnglish) {
+			setEnglishQuery(false);
+			return;
+		} else setEnglishQuery(true);
 
 		try {
-			dispatch(setLoading(true));
-
-			const places = await fetchPlaces(query);
-			console.log(places.results);
-			dispatch(setPlaces(places.results));
-			router.push('/results');
+			const places = fetchPlaces(query);
+			console.log(places);
 		} catch (error) {
-			dispatch(setLoading(false));
-			dispatch(setError(true));
-		} finally {
-			dispatch(setLoading(false));
-			dispatch(setError(false));
+			console.log(error);
 		}
-	}, []);
+	}, [query]);
+
+	const isEnglishQueryStyles = useMemo(() => (
+		!isEnglishQuery ? 'border-2 border-solid border-red-600 ' : ''
+	), [isEnglishQuery, query]);
 
 	return (
 		<main className={ styles.hero__container }>
@@ -40,7 +39,10 @@ const Search: FC = () => {
 					<h1 className={ styles.hero__title }>Крок до подорожі</h1>
 				</div>
 				<div className={ styles.search__container }>
-					<input onKeyDown={ keyDownHandler } type="text" className={ styles.search } />
+					<input value={ query } onChange={ (e => setQuery(e.target.value)) } onKeyDown={ keyDownHandler } type="text" className={ `${ styles.search } ${ isEnglishQueryStyles }` } pattern="[u0750-\u077F]" />
+					{ !isEnglishQuery
+						? <span className='text-white'>Будь ласка, введіть англійську назвук міста</span>
+						: '' }
 				</div>
 			</div>
 		</main>
