@@ -6,16 +6,20 @@ import { useSearchPlacesQuery } from "@/store/slices/apiSlice";
 import { useSearchParams } from "next/navigation";
 
 // types
-import { IPlace } from "@/types/types";
+import { IPlace, IResponse } from "@/types/types";
+
+// components
+import { Loader } from "@/components/utils/Loader";
+import { NoResults } from "@/components/utils/NoResults";
 
 const Results: FC = () => {
 	const searchParams = useSearchParams();
 	const query = searchParams.get('query') || '';
 	const { data, error, isLoading } = useSearchPlacesQuery(query);
-	
-	if (isLoading) return <span>Loading...</span> // here will be a component
-	if (error) return <span>Error loading results</span> // here will be a component
-	if (!data) return <span>No results</span>
+
+	if (isLoading) return <Loader />
+	if (error) return <NoResults query={ query } />
+	if (!data || !data.results?.length) return <span>No results</span>
 
 	return (
 		<div className={ styles.root }>

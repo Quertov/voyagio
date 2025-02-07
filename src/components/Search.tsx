@@ -8,7 +8,6 @@ const Search: FC = () => {
 	const { fetchPlaces } = useSearch();
 	const [isEnglishQuery, setEnglishQuery] = useState<boolean>(true);
 	const [query, setQuery] = useState<string>('');
-	const [isQueryEmptry, setQueryEmpty] = useState<boolean>(false);
 
 	const keyDownHandler = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key !== 'Enter') return;
@@ -29,7 +28,7 @@ const Search: FC = () => {
 	}, [query]);
 
 	const isEnglishQueryStyles = useMemo(() => (
-		!isEnglishQuery ? 'border-2 border-solid border-red-600 ' : ''
+		!isEnglishQuery ? 'border-red-600 ' : 'border-black'
 	), [isEnglishQuery, query]);
 
 	return (
@@ -41,7 +40,7 @@ const Search: FC = () => {
 				<div className={ styles.search__container }>
 					<input value={ query } onChange={ (e => setQuery(e.target.value)) } onKeyDown={ keyDownHandler } type="text" className={ `${ styles.search } ${ isEnglishQueryStyles }` } pattern="[u0750-\u077F]" />
 					{ !isEnglishQuery
-						? <span className='text-white'>Будь ласка, введіть англійську назвук міста</span>
+						? <span className='text-white font-bold'>Будь ласка, введіть англійську назву міста</span>
 						: '' }
 				</div>
 			</div>

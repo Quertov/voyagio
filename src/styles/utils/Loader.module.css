@@ -1,0 +1,8 @@
+.loader__root {
+	@apply
+	min-h-screen
+	flex
+	justify-center
+	items-center
+	;
+}
