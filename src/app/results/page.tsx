@@ -6,7 +6,7 @@ import { useSearchPlacesQuery } from "@/store/slices/apiSlice";
 import { useSearchParams } from "next/navigation";
 
 // types
-import { IPlace, IResponse } from "@/types/types";
+import { IPlace } from "@/types/types";
 
 // components
 import { Loader } from "@/components/utils/Loader";
@@ -20,13 +20,14 @@ const Results: FC = () => {
 	if (isLoading) return <Loader />
 	if (error) return <NoResults query={ query } />
 	if (!data || !data.results?.length) return <span>No results</span>
+	console.log(data);
 
 	return (
 		<div className={ styles.root }>
 			<h1>Results for { query }</h1>
 			<section>
-				{ data.results.map((place: IPlace) => (
-					<article key={ place.fsqId }>
+				{ data.results.map((place: IPlace, i) => (
+					<article key={ i }>
 						<h2>{ place.name }</h2>
 					</article>
 				)) }

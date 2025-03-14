@@ -3,6 +3,7 @@
 import styles from '@/styles/Search.module.css';
 import { FC, useCallback, useMemo, useState } from "react";
 import { useSearch } from "@/hooks/useSearch";
+import { toast, ToastContainer } from 'react-toastify';
 
 const Search: FC = () => {
 	const { fetchPlaces } = useSearch();
@@ -16,8 +17,16 @@ const Search: FC = () => {
 		const isEnglish = /^[a-zA-Z\s]+$/.test(query);
 		if (!isEnglish) {
 			setEnglishQuery(false);
+			toast.error('Введіть назву англійською мовою', {
+				position: 'bottom-right',
+				autoClose: 4000,
+				pauseOnHover: true,
+				theme: 'light'
+			});
 			return;
-		} else setEnglishQuery(true);
+		} else {
+			setEnglishQuery(true);
+		}
 
 		try {
 			const places = fetchPlaces(query);
@@ -38,12 +47,16 @@ const Search: FC = () => {
 					<h1 className={ styles.hero__title }>Крок до подорожі</h1>
 				</div>
 				<div className={ styles.search__container }>
-					<input value={ query } onChange={ (e => setQuery(e.target.value)) } onKeyDown={ keyDownHandler } type="text" className={ `${ styles.search } ${ isEnglishQueryStyles }` } pattern="[u0750-\u077F]" />
-					{ !isEnglishQuery
-						? <span className='text-white font-bold'>Будь ласка, введіть англійську назву міста</span>
-						: '' }
+					<input
+						value={ query }
+						onChange={ (e => setQuery(e.target.value)) }
+						onKeyDown={ keyDownHandler }
+						type="text"
+						className={ `${ styles.search } ${ isEnglishQueryStyles }` }
+						pattern="[u0750-\u077F]" />
 				</div>
 			</div>
+			<ToastContainer />
 		</main>
 	)
 };

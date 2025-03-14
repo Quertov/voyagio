@@ -57,15 +57,3 @@
 	border-solid 
 	;
 }
-
-.search:after {
-	content: '';
-	@apply
-	absolute
-	left-0
-	bottom-0
-	w-full
-	h-[2px]
-	bg-[#ccc]
-	;
-}
