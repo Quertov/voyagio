@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 export const useSearch = () => {
 	const router = useRouter();
 
-	const fetchPlaces = useCallback((query: string) => {
-		router.push(`/results?query=${query}`);
+	const fetchPlaces = useCallback((category: number, query: string) => {
+		router.push(`/results?category=${category}&query=${query}`);
 	}, []);
 
 	return { fetchPlaces };

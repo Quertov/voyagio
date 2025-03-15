@@ -15,7 +15,8 @@ import { NoResults } from "@/components/utils/NoResults";
 const Results: FC = () => {
 	const searchParams = useSearchParams();
 	const query = searchParams.get('query') || '';
-	const { data, error, isLoading } = useSearchPlacesQuery(query);
+	const category = Number(searchParams.get('category'));
+	const { data, error, isLoading } = useSearchPlacesQuery({category, query});
 
 	if (isLoading) return <Loader />
 	if (error) return <NoResults query={ query } />

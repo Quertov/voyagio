@@ -40,3 +40,15 @@ export interface IPlace {
 export interface IResponse {
 	results: IPlace[]
 };
+
+export interface ICategoriesIds {
+	landmarks: number,
+	hotels: number,
+	restaurants: number
+};
+
+export interface ICategoriesTitles {
+	landmarks: string,
+	hotels: string,
+	restaurants: string
+};

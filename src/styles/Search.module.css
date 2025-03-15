@@ -1,7 +1,6 @@
 .hero__container {
 	@apply
 	rounded-md
-	h-[500px]
 	max-w-full
 	mt-[100px]
 	flex
@@ -9,10 +8,6 @@
 	items-center
 	flex-col
 	;
-	background-image: url('/search.png');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .hero__inner {
@@ -30,30 +25,51 @@
 
 .hero__title {
 	@apply
-	text-white
-	text-[36px]
+	text-black
+	text-[48px]
 	font-bold
+	mb-[30px]
 	;
 }
 
 .search__container {
 	@apply
 	w-[890px]
-	h-[50px]
+	h-[56px]
+	relative
+	mt-[40px]
 	;
 }
 
 .search {
 	@apply
-	rounded-2xl
+	rounded-full
 	text-black
 	text-[20px]
 	outline-none
 	w-full
 	h-full
 	px-[16px]
-	py-[13px]
-	border-2
-	border-solid 
+	pr-[10px]
+	pl-[50px]
+	;
+	box-shadow: 5px 5px 10px 10px lightgray;
+}
+
+.hero__categories_container {
+	@apply
+	flex
+	items-center
+	gap-[50px]
+	;
+}
+
+.hero__category {
+	@apply
+	text-[20px]
+	cursor-pointer
+	flex
+	items-center
+	gap-[3px]
 	;
 }

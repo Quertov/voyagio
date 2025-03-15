@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'TripSans';
+  src: url('/fonts/TripSans-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'TripSans';
+  src: url('/fonts/TripSans-Medium.woff2');
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'TripSans';
+  src: url('/fonts/TripSans-Bold.woff2');
+  font-style: normal;
+  font-weight: 700;
+}
+
 :root {
   --background: #f8f9fd;
   --accent: #0b94f8;

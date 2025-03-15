@@ -14,8 +14,8 @@ export const searchApi = createApi({
 		},
 	}),
 	endpoints: (builder) => ({
-		searchPlaces: builder.query<IResponse, string>({
-			query: (query: string) => `/search?categories=16000&near=${query}&limit=50`,
+		searchPlaces: builder.query<IResponse, { category: number, query: string }>({
+			query: ({ category, query }) => `/search?categories=${category}&near=${query}&limit=50`,
 		}),
 	})
 });
