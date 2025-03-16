@@ -10,17 +10,13 @@ import StarIcon from '../../public/icons/star.svg';
 import RestrauntIcon from '../../public/icons/restraunt.svg';
 import HotelIcon from '../../public/icons/hotel.svg';
 import { ICategoriesIds, ICategoriesTitles } from '@/types/types';
+import clsx from 'clsx';
 
 const Search: FC = () => {
 	const { fetchPlaces } = useSearch();
 	const [isEnglishQuery, setEnglishQuery] = useState<boolean>(true);
 	const [query, setQuery] = useState<string>('');
 	const [category, setCategory] = useState<'landmarks' | 'hotels' | 'restaurants'>('landmarks');
-	const categoriesTexts = useMemo(() => ( [
-		{ text: 'Визначні місця', icon: StarIcon },
-		{ text: 'Готелі', icon: HotelIcon },
-		{ text: 'Ресторани', icon: RestrauntIcon }
-	] ), []);
 
 	const categoryId: ICategoriesIds = useMemo(() => ( {
 		landmarks: 16000,
@@ -28,10 +24,19 @@ const Search: FC = () => {
 		restaurants: 13000
 	} ), []);
 
-	const categoryTitles: ICategoriesTitles = useMemo(() => ( {
-		landmarks: 'Один крок до подорожі',
-		hotels: 'Зупиніться в чудовому місці',
-		restaurants: 'Знайдіть місця, де можна поїсти'
+	const categoryTexts = useMemo(() => ( {
+		landmarks: {
+			title: 'Один крок до подорожі',
+			placeholder: 'Визначне місце, памʼятка, площа і т.д.'
+		},
+		hotels: {
+			title: 'Зупиніться в чудовому місці',
+			placeholder: 'Назва готелю або місце призначення'
+		},
+		restaurants: {
+			title: 'Знайдіть місця, де можна поїсти',
+			placeholder: 'Ресторан, кафе, бар або місце призначення'
+		}
 	} ), []);
 
 	const keyDownHandler = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -67,18 +72,24 @@ const Search: FC = () => {
 	return (
 		<main className={ styles.hero__container }>
 			<div className={ styles.hero__title_container }>
-				<h1 className={ styles.hero__title }>{ categoryTitles[category] }</h1>
+				<h1 className={ styles.hero__title }>{ categoryTexts[category].title }</h1>
 			</div>
 			<div className={ styles.hero__categories_container }>
-					<div className={ styles.hero__category } onClick={ () => setCategory('landmarks') }>
+					<div
+						className={ clsx(styles.hero__category, ( category === 'landmarks' ? 'border-b-2 border-black' : '' )) }
+						onClick={ () => setCategory('landmarks') }>
 						<Image src={ StarIcon } alt='' width={ 28 } height={ 28 } />
 						Визначні місця
 					</div>
-					<div className={ styles.hero__category } onClick={ () => setCategory('hotels') }>
+					<div
+						className={ clsx(styles.hero__category, ( category === 'hotels' ? 'border-b-2 border-black' : '' )) }
+						onClick={ () => setCategory('hotels') }>
 						<Image src={ HotelIcon } alt='' width={ 28 } height={ 28 } className='mr-[3px]' />
 						Готелі
 					</div>
-					<div className={ styles.hero__category } onClick={ () => setCategory('restaurants') }>
+					<div
+						className={ clsx(styles.hero__category, ( category === 'restaurants' ? 'border-b-2 border-black' : '' )) }
+						onClick={ () => setCategory('restaurants') }>
 						<Image src={ RestrauntIcon } alt='' width={ 28 } height={ 28 } />
 						Ресторани
 					</div>
@@ -91,7 +102,8 @@ const Search: FC = () => {
 					onKeyDown={ keyDownHandler }
 					type="text"
 					className={ `${ styles.search } ${ isEnglishQueryStyles }` }
-					pattern="[u0750-\u077F]" />
+					pattern="[u0750-\u077F]"
+					placeholder={ categoryTexts[category].placeholder } />
 				</div>
 			<ToastContainer />
 		</main>
