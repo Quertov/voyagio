@@ -25,7 +25,7 @@ const Results: FC = () => {
 
 	return (
 		<div className={ styles.root }>
-			<h1>Results for { query }</h1>
+			<h1>Results for { query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }</h1>
 			<section>
 				{ data.results.map((place: IPlace, i) => (
 					<article key={ i }>

@@ -73,3 +73,33 @@
 	gap-[3px]
 	;
 }
+
+.search__button {
+	@apply
+	absolute
+	right-[15px]
+	top-[7px]
+	w-[100px]
+	h-[40px]
+	flex
+	items-center
+	justify-center
+	bg-accent
+	font-bold
+	text-white
+	rounded-full
+	cursor-pointer
+	;
+}
+
+.search__button:hover {
+	@apply
+	opacity-80
+	;
+}
+
+.search__button:active {
+	@apply
+	opacity-50
+	;
+}
