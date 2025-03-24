@@ -25,7 +25,7 @@ export interface IPlace {
 	categories: ICategory[],
 	name: string,
 	closedBucket: string,
-	fsqId: string,
+	fsq_id: string,
 	location: ILocation,
 	timezone: string,
 	geocodes: {

@@ -3,3 +3,13 @@
 	pt-[70px]
 	;
 }
+
+.results__title {
+	@apply
+	text-black
+	text-[24px]
+	font-medium
+	pl-[20px]
+	pt-[10px]
+	;
+}
