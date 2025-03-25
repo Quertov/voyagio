@@ -47,7 +47,7 @@ const Results: FC = () => {
 	return (
 		<div className={ styles.root }>
 			<h1 className={ styles.results__title }>Результати за запитом: "{ query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }"</h1>
-			<section>
+			<section className={ styles.results__places_grid }>
 				{ data.results.map((place: IPlace, i) => (
 					<Place
 						key={ i }

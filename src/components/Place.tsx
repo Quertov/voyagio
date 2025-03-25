@@ -13,8 +13,8 @@ export const Place: FC<PlaceProps> = ({ name, photos, fsqId }) => {
 
 	return (
 		<article>
-			<Image alt="Place image" width={368} height={276} src={ photos[fsqId]?.[0] } />
-			<h1>{ name }</h1>
+			<Image className={ styles.place__image } alt="Place image" width={368} height={276} src={ photos[fsqId]?.[0] } />
+			<h1 className={ styles.place__name }>{ name }</h1>
 		</article>
 	)
 }

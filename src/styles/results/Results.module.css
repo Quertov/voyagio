@@ -1,6 +1,7 @@
 .root {
 	@apply
 	pt-[70px]
+	w-full
 	;
 }
 
@@ -11,5 +12,15 @@
 	font-medium
 	pl-[20px]
 	pt-[10px]
+	;
+}
+
+.results__places_grid {
+	@apply
+	w-full
+	grid
+	grid-cols-3
+	justify-center
+	items-center
 	;
 }
