@@ -1,4 +1,9 @@
 export interface ICategory {
+	id: number
+	icon: {
+		prefix: string,
+		suffix: string
+	}
 	name: string
 };
 

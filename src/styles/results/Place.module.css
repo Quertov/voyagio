@@ -1,5 +1,41 @@
+.place__container {
+	@apply
+	cursor-pointer
+	flex
+	items-center
+	flex-col
+	;
+}
+
 .place__image {
 	@apply
 	rounded-2xl
+	;
+}
+
+.place__name {
+	@apply
+	font-semibold
+	text-black
+	text-[18px]
+	mt-[10px]
+	text-center
+	;
+	font-family: var(--poppins-font);
+}
+
+.place__container:hover .place__name {
+	@apply
+	underline
+	underline-offset-4
+	;
+}
+
+.category__name {
+	@apply
+	font-medium
+	mt-[10px]
+	flex
+	items-center
 	;
 }
