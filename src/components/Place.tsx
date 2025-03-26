@@ -1,14 +1,17 @@
-import { FC, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import styles from "@/styles/results/Place.module.css";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { ICategory } from "@/types/types";
+import { ICategory, ILocation, IGeocodes } from "@/types/types";
+import { PlacePopup } from "./PlacePopup";
 
 interface PlaceProps {
 	name: string,
 	photos: { [key: string]: string[] },
 	fsqId: string,
-	category: ICategory[]
+	category: ICategory[],
+	location: ILocation,
+	geocodes: IGeocodes
 };
 
 const poppins = Poppins({
@@ -18,13 +21,29 @@ const poppins = Poppins({
 	subsets: ['latin', 'latin-ext']
 });
 
-export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category }) => {
+export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, location, geocodes }) => {
+	const [isOpened, setIsOpened] = useState<boolean>(false);
+
+	useEffect(() => {
+		console.log(isOpened);
+
+		if (isOpened) {
+			document.body.style.overflow = 'hidden';
+		} else {
+			document.body.style.overflow = 'auto';
+		}
+
+		return () => {
+			document.body.style.overflow = 'auto';
+		};
+	}, [isOpened]);
+
 	return (
 		<>
 			{
 				photos[fsqId]?.[0]
 				&& (
-					<article className={ `${styles.place__container} ${poppins.variable} antialiased` }>
+					<article className={ `${styles.place__container} ${poppins.variable} antialiased` } onClick={ () => setIsOpened(true) }>
 						<Image className={ styles.place__image } alt="Фото місця" width={368} height={276} src={ photos[fsqId]?.[0] } />
 						<h1 className={ styles.place__name }>{ name }</h1>
 						<span className={ styles.category__name }>
@@ -36,6 +55,15 @@ export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category }) => {
 								height={28} />
 							{ category[0].name }
 						</span>
+						<PlacePopup
+							isOpened={ isOpened }
+							setIsOpened={ setIsOpened }
+							name={ name }
+							photos={ photos }
+							fsqId={ fsqId }
+							category={ category[0] }
+							location={ location }
+							geocodes={ geocodes } />
 					</article>
 				)
 			}

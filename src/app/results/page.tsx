@@ -26,7 +26,7 @@ const Results: FC = () => {
 	const query = searchParams.get('query') || '';
 	const category = Number(searchParams.get('category'));
 	const { data, error, isLoading } = useSearchPlacesQuery({category, query});
-	console.log(data?.results);
+
 	const [currentPage, setCurrentPage] = useState<number>(1);
 	const startIndex = useMemo(() => ( (currentPage - 1) * ITEMS_PER_PAGE ), [currentPage]);
 	const endIndex = useMemo(() => ( startIndex + ITEMS_PER_PAGE ), [startIndex]);
@@ -69,7 +69,9 @@ const Results: FC = () => {
 						name={ place.name }
 						photos={ photos }
 						fsqId={ place.fsq_id }
-						category={ place.categories } />
+						category={ place.categories }
+						location={ place.location }
+						geocodes={ place.geocodes.main } />
 				)) }
 			</section>
 			<div className={ styles.pagination__buttons_container }>
