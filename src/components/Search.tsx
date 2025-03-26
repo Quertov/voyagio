@@ -9,35 +9,15 @@ import SearchIcon from '../../public/icons/search.svg';
 import StarIcon from '../../public/icons/star.svg';
 import RestrauntIcon from '../../public/icons/restraunt.svg';
 import HotelIcon from '../../public/icons/hotel.svg';
-import { ICategoriesIds } from '@/types/types';
 import clsx from 'clsx';
+import { categoryId } from '@/data/categoriesPresets';
+import { categoryTexts } from '@/data/categoriesPresets';
 
 const Search: FC = () => {
 	const { fetchPlaces } = useSearch();
 	const [isEnglishQuery, setEnglishQuery] = useState<boolean>(true);
 	const [query, setQuery] = useState<string>('');
 	const [category, setCategory] = useState<'landmarks' | 'hotels' | 'restaurants'>('landmarks');
-
-	const categoryId: ICategoriesIds = useMemo(() => ( {
-		landmarks: 16000,
-		hotels: 19014,
-		restaurants: 13000
-	} ), []);
-
-	const categoryTexts = useMemo(() => ( {
-		landmarks: {
-			title: 'Один крок до подорожі',
-			placeholder: 'Визначне місце, памʼятка, площа і т.д.'
-		},
-		hotels: {
-			title: 'Зупиніться в чудовому місці',
-			placeholder: 'Назва готелю або місце призначення'
-		},
-		restaurants: {
-			title: 'Знайдіть місця, де можна поїсти',
-			placeholder: 'Ресторан, кафе, бар або місце призначення'
-		}
-	} ), []);
 
 	const searchHandler = useCallback((event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>) => {
 		if ('key' in event && event.key !== 'Enter') return;
