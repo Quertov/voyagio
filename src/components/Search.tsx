@@ -27,7 +27,7 @@ const Search: FC = () => {
 		if ('key' in event && event.key !== 'Enter') return;
 
 		if (!query) return;
-		const isEnglish = /^[a-zA-Z\s]+$/.test(query);
+		const isEnglish = /^[a-zA-Z\s-'’]+$/.test(query);
 		if (!isEnglish) {
 			setEnglishQuery(false);
 			toast.error('Введіть назву англійською мовою', {
@@ -92,17 +92,19 @@ const Search: FC = () => {
 					aria-label='Search button'
 					className={ styles.search__button }
 					onClick={ searchHandler } >Пошук</button>
-				</div>
-			<ToastContainer />
+			<div className={ styles.autocomplete__container }>
 					{cities
 						.filter(city =>
 							city.name.toLowerCase().includes(query.toLowerCase()) && query
 						)
 						.slice(0, 5)
 						.map(city => (
-							<span className='cursor-pointer' key={city.name} onClick={ () => setQuery(city.name) }>{city.name}, {city.country_name}</span>
+							<span className={ styles.autocomplete__option } key={city.name} onClick={ () => setQuery(city.name) }>{city.name}, {city.country_name}</span>
 						))
 					}
+			</div>
+				</div>
+			<ToastContainer />
 		</main>
 	)
 };

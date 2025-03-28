@@ -103,3 +103,33 @@
 	opacity-50
 	;
 }
+
+.autocomplete__container {
+	@apply
+	w-2/3
+	flex
+	flex-col
+	absolute
+	z-10
+	bg-white
+	mt-[10px]
+	rounded-2xl
+	pl-[10px]
+	;
+}
+
+.autocomplete__option {
+	@apply
+	text-[24px]
+	my-[5px]
+	cursor-pointer
+	w-full
+	px-[20px]
+	;
+}
+
+.autocomplete__option:hover {
+	@apply
+	bg-gray-200
+	;
+}
