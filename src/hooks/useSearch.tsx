@@ -1,6 +1,5 @@
 'use client';
 
-import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
 import 'dotenv/config';
@@ -8,9 +7,9 @@ import 'dotenv/config';
 export const useSearch = () => {
 	const router = useRouter();
 
-	const fetchPlaces = useCallback((category: number, query: string) => {
+	const fetchPlaces = (category: number, query: string) => {
 		router.push(`/results?category=${category}&query=${query}`);
-	}, []);
+	};
 
 	return { fetchPlaces };
 }
