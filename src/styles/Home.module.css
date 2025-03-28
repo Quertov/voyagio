@@ -1,6 +1,5 @@
 .root {
 	@apply
 	min-h-screen
-	px-[50px]
 	;
 }

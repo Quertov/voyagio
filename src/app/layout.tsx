@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import "./globals.css";
 import Header from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import ClientProvider from "./ClientProvider";
 
-const roboto = Roboto({
+const montserrat = Montserrat({
   variable: '--roboto-font',
   weight: ['400', '500', '700'],
   style: ['normal'],
@@ -23,9 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable} antialiased`}>
-        <Header />
-        {children}
+      <body className={`${montserrat.variable} antialiased`}>
+        <ClientProvider>
+          <Header />
+          { children }
+          <Footer />
+        </ClientProvider>
       </body>
     </html>
   );

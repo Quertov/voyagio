@@ -1,0 +1,9 @@
+.button {
+	@apply
+	text-white
+	h-[33px]
+	bg-accent
+	rounded-md
+	font-medium
+	;
+}

@@ -1,12 +1,19 @@
 'use client';
 
 import { useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { redirect } from "next/navigation";
 import 'dotenv/config';
 
 export const useSearch = () => {
-	// const [isLoading, setLoading] = useState<boolean>(false);
+	const router = useRouter();
 
+	const fetchPlaces = useCallback((category: number, query: string) => {
+		router.push(`/results?category=${category}&query=${query}`);
+	}, []);
+
+	return { fetchPlaces };
+}
 	const fetchData = useCallback(async (query: string) => {
 		// setLoading(true);
 		try {

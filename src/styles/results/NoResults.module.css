@@ -1,0 +1,48 @@
+.noresults__root {
+	@apply
+	min-h-screen
+	flex
+	flex-col
+	justify-center
+	items-center
+	;
+}
+
+.noresults__img {
+	@apply
+	w-[200px]
+	h-[200px]
+	mb-[20px]
+	;
+	background-image: url('/no-results.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.noresults__title {
+	@apply
+	font-bold
+	text-[32px]
+	text-center
+	mb-[10px]
+	;
+}
+
+.noresults__hint {
+	@apply
+	text-[24px]
+	mb-[10px]
+	;
+}
+
+.noresults__link {
+	@apply
+	bg-accent
+	text-white
+	py-[10px]
+	px-[15px]
+	rounded-md
+	font-medium
+	;
+}

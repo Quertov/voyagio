@@ -1,0 +1,73 @@
+.banner__container {
+	@apply
+	w-full
+	flex
+	justify-center
+	items-center
+	pt-[80px]
+	;
+}
+
+.banner__image_container {
+	@apply
+	relative
+	block
+	z-0
+	cursor-default
+	pointer-events-none
+	;
+}
+
+.banner__image {
+	@apply
+	rounded-3xl
+	;
+}
+
+.banner__image_container::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	top: 0;
+	width: 600px;
+	height: 100%;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+	border-radius: 24px;
+}
+
+.banner__text_container {
+	@apply
+	absolute
+	w-[550px]
+	h-full
+	flex
+	justify-center
+	items-center
+	flex-col
+	z-10
+	text-white
+	;
+	font-family: var(--manrope-font);
+}
+
+.banner__text_container h1 {
+	@apply
+	text-[48px]
+	font-bold
+	mb-[20px]
+	;
+}
+
+.banner__text_container p {
+	@apply
+	text-[28px]
+	font-medium
+	;
+}
+
+.banner__text_wrapper {
+	@apply
+	w-[400px]
+	;
+}

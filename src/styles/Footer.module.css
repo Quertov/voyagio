@@ -1,0 +1,25 @@
+.footer__container {
+	@apply
+	w-full
+	flex
+	items-center
+	justify-between
+	mt-[100px]
+	bg-white
+	h-[80px]
+	px-[50px]
+	;
+}
+
+.footer__text_container {
+	@apply
+	text-[24px]
+	;
+}
+
+.footer__socials_container {
+	@apply
+	flex
+	gap-[20px]
+	;
+}

@@ -1,5 +1,66 @@
 .root {
 	@apply
 	pt-[70px]
+	w-full
+	;
+}
+
+.results__title {
+	@apply
+	text-black
+	text-[24px]
+	font-medium
+	pl-[20px]
+	pt-[10px]
+	;
+}
+
+.results__places_grid {
+	@apply
+	w-full
+	grid
+	grid-cols-3
+	place-items-center
+	mt-[50px]
+	gap-[30px]
+	;
+}
+
+.pagination__buttons_container {
+	@apply
+	w-full
+	flex
+	justify-center
+	items-center
+	mt-[40px]
+	gap-[20px]
+	mb-[50px]
+	;
+}
+
+.pagination__buttons_container button {
+	@apply
+	w-[40px]
+	h-[40px]
+	flex
+	justify-center
+	items-center
+	rounded-full
+	bg-accent
+	cursor-pointer
+	text-center
+	;
+}
+
+.pagination__buttons_container button:disabled {
+	@apply
+	opacity-60
+	cursor-default
+	;
+}
+
+.pagination__buttons_container button:active {
+	@apply
+	opacity-80
 	;
 }
