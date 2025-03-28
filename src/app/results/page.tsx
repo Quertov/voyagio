@@ -1,6 +1,6 @@
 'use client';
 
-import { FC, useState, useEffect, useMemo } from "react";
+import { FC, useState, useEffect } from "react";
 import styles from '@/styles/results/Results.module.css';
 import { useSearchPlacesQuery } from "@/store/slices/apiSlice";
 import { useSearchParams } from "next/navigation";
@@ -17,8 +17,8 @@ import { NoResults } from "@/components/utils/NoResults";
 import { Place } from "@/components/Place";
 
 // icons
-import ArrowLeft from '../../../public/icons/arrow_left.svg';
-import ArrowRight from '../../../public/icons/arrow_right.svg';
+import ArrowLeft from '@/icons/arrow_left.svg';
+import ArrowRight from '@/icons/arrow_right.svg';
 
 const ITEMS_PER_PAGE = 9;
 
@@ -29,11 +29,10 @@ const Results: FC = () => {
 	const { data, error, isLoading } = useSearchPlacesQuery({category, query});
 
 	const [currentPage, setCurrentPage] = useState<number>(1);
-	const startIndex = useMemo(() => ( (currentPage - 1) * ITEMS_PER_PAGE ), [currentPage]);
-	const endIndex = useMemo(() => ( startIndex + ITEMS_PER_PAGE ), [startIndex]);
-	const currentItems = useMemo(() => ( data?.results.slice(startIndex, endIndex) ), [startIndex, endIndex, data?.results]);
-	// @ts-ignore
-	const totalPages = useMemo(() => ( Math.ceil(data?.results.length / ITEMS_PER_PAGE) ), [data?.results.length]);
+	const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+	const endIndex = startIndex + ITEMS_PER_PAGE;
+	const currentItems = data?.results.slice(startIndex, endIndex);
+	const totalPages = data?.results ? Math.ceil(data.results.length / ITEMS_PER_PAGE) : 1;
 
 	const { fetchPhotos } = usePhotos();
 
@@ -61,7 +60,7 @@ const Results: FC = () => {
 		
 	return (
 		<div className={ styles.root }>
-			<h1 className={ styles.results__title }>{ categoryName[category] } за запитом: "{ query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }"</h1>
+			<h1 className={ styles.results__title }>{ categoryName[category] } за запитом: &quot;{ query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }&quot;</h1>
 			<section className={ styles.results__places_grid }>
 				{ currentItems?.map((place: IPlace, i) => (
 					<Place

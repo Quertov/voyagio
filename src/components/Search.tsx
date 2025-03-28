@@ -1,14 +1,14 @@
 'use client';
 
 import styles from '@/styles/Search.module.css';
-import { FC, useCallback, useMemo, useState } from "react";
+import { FC, useState } from "react";
 import { useSearch } from "@/hooks/useSearch";
 import { toast, ToastContainer } from 'react-toastify';
 import Image from 'next/image';
-import SearchIcon from '../../public/icons/search.svg';
-import StarIcon from '../../public/icons/star.svg';
-import RestrauntIcon from '../../public/icons/restraunt.svg';
-import HotelIcon from '../../public/icons/hotel.svg';
+import SearchIcon from '@/icons/search.svg';
+import StarIcon from '@/icons/star.svg';
+import RestrauntIcon from '@/icons/restraunt.svg';
+import HotelIcon from '@/icons/hotel.svg';
 import clsx from 'clsx';
 import { categoryId } from '@/data/categoriesPresets';
 import { categoryTexts } from '@/data/categoriesPresets';
@@ -23,7 +23,7 @@ const Search: FC = () => {
 	const [query, setQuery] = useState<string>('');
 	const [category, setCategory] = useState<'landmarks' | 'hotels' | 'restaurants'>('landmarks');
 
-	const searchHandler = useCallback((event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>) => {
+	const searchHandler = (event: React.KeyboardEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>) => {
 		if ('key' in event && event.key !== 'Enter') return;
 
 		if (!query) return;
@@ -47,11 +47,11 @@ const Search: FC = () => {
 		} catch (error) {
 			console.log(error);
 		}
-	}, [query]);
+	};
 
-	const isEnglishQueryStyles = useMemo(() => (
+	const isEnglishQueryStyles = (() => (
 		!isEnglishQuery ? 'border-red-600 ' : 'border-black'
-	), [isEnglishQuery, query]);
+	));
 
 	return (
 		<main className={ styles.hero__container }>
