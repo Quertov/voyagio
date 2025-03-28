@@ -98,8 +98,8 @@ const Search: FC = () => {
 							city.name.toLowerCase().includes(query.toLowerCase()) && query
 						)
 						.slice(0, 5)
-						.map(city => (
-							<span className={ styles.autocomplete__option } key={city.name} onClick={ () => setQuery(city.name) }>{city.name}, {city.country_name}</span>
+						.map((city, i) => (
+							<span className={ styles.autocomplete__option } key={ i } onClick={ () => setQuery(city.name) }>{city.name}, {city.country_name}</span>
 						))
 					}
 			</div>
