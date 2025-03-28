@@ -17,12 +17,6 @@
 	;
 }
 
-.hero__title_container {
-	@apply
-	mb-[15px]
-	;
-}
-
 .hero__title {
 	@apply
 	text-black
@@ -71,6 +65,12 @@
 	flex
 	items-center
 	gap-[3px]
+	;
+}
+
+.hero__category:hover {
+	@apply
+	opacity-60
 	;
 }
 

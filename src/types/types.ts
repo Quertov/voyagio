@@ -57,3 +57,8 @@ export interface ICategoriesTitles {
 	hotels: string,
 	restaurants: string
 };
+
+export interface ICity {
+	name: string,
+	country_name: string
+};

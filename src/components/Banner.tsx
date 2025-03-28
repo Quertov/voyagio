@@ -24,7 +24,7 @@ export const Banner: FC = () => {
 			}
 			setCurrentBanner(`banner${bannerNumber}`);
 			++bannerNumber;
-		}, 10000);
+		}, 7000);
 
 		return () => clearInterval(bannerChangeInterval);
 	}, []);

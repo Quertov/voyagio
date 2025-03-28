@@ -37,7 +37,7 @@ export const PlacePopup: FC<PlacePopupProps> = ({ isOpened, setIsOpened, name, p
 						event.stopPropagation();
 						setIsOpened(false);
 					} }>
-						<Image alt="Закрити інформацію про місце" src={ XIcon } width={40} height={40} className="cursor-pointer"/>
+						<Image alt="Закрити інформацію про місце" src={ XIcon } width={40} height={40} className="cursor-pointer hover:opacity-50"/>
 						<Image alt="Логотип" src="/logo.png" width={115} height={31} />
 					</div>
 					<div className={ styles.place__info }>

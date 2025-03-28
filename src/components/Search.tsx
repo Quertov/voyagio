@@ -12,6 +12,10 @@ import HotelIcon from '../../public/icons/hotel.svg';
 import clsx from 'clsx';
 import { categoryId } from '@/data/categoriesPresets';
 import { categoryTexts } from '@/data/categoriesPresets';
+import citiesJson from '@/data/cities.json';
+import { ICity } from '@/types/types';
+
+const cities: ICity[] = citiesJson as ICity[];
 
 const Search: FC = () => {
 	const { fetchPlaces } = useSearch();
@@ -90,6 +94,15 @@ const Search: FC = () => {
 					onClick={ searchHandler } >Пошук</button>
 				</div>
 			<ToastContainer />
+					{cities
+						.filter(city =>
+							city.name.toLowerCase().includes(query.toLowerCase()) && query
+						)
+						.slice(0, 5)
+						.map(city => (
+							<span className='cursor-pointer' key={city.name} onClick={ () => setQuery(city.name) }>{city.name}, {city.country_name}</span>
+						))
+					}
 		</main>
 	)
 };
