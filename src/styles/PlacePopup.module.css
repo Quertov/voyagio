@@ -27,6 +27,7 @@
 	w-[700px]
 	flex
 	flex-col
+	overflow-y-auto
 	;
 	border-left-style: solid;
 	border-bottom-left-radius: 5px;
@@ -34,15 +35,32 @@
 	transition: transform 0.6s ease-out;
 }
 
+.place__name_container {
+	@apply
+	flex
+	items-center
+	gap-[10px]
+	my-[15px]
+	;
+}
+
 .place__name {
 	@apply
 	text-black
 	text-[28px]
 	text-center
-	font-medium
-	mt-[15px]
+	font-bold
 	;
-	font-family: var(--poppins-font);
+	font-family: var(--manrope-font);
+}
+
+.place__btn_container {
+	@apply
+	w-full
+	flex
+	justify-end
+	mr-[40px]
+	;
 }
 
 .popup__inner {

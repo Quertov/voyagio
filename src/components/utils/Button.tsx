@@ -1,20 +1,26 @@
-import { FC, useMemo } from "react";
-import styles from '@/styles/Button.module.css';
+import { FC } from "react";
+import styles from '@/styles/utils/Button.module.css';
+import Link from "next/link";
 
 interface ButtonProps {
 	children: React.ReactNode,
-	authorization?: boolean
+	isLink?: boolean
+	href?: string
 };
 
-const Button: FC<ButtonProps> = ({ children, authorization }) => {
-	const buttonWidth = useMemo(() => (
-		authorization ? 'w-[170px]' : 'w-[250px]'
-	), [authorization]);
-			
+const Button: FC<ButtonProps> = ({ children, isLink, href }) => {
 	return (
-		<button className={ `${ styles.button } ${ buttonWidth }` }>
-			{ children }
-		</button>
+		<>
+			{
+				!isLink
+					? (
+						<button className={ styles.button }>{ children }</button>
+					)
+					: (
+						<Link href={ href ? href : '' } target="_blank" className={ styles.button }>{ children }</Link>
+					)
+			}
+		</>
 	)
 };
 

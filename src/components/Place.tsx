@@ -10,8 +10,8 @@ interface PlaceProps {
 	photos: { [key: string]: string[] },
 	fsqId: string,
 	category: ICategory[],
-	location: ILocation,
-	geocodes: IGeocodes
+	geocodes: IGeocodes,
+	country: string
 };
 
 const poppins = Poppins({
@@ -21,12 +21,10 @@ const poppins = Poppins({
 	subsets: ['latin', 'latin-ext']
 });
 
-export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, location, geocodes }) => {
+export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, geocodes, country }) => {
 	const [isOpened, setIsOpened] = useState<boolean>(false);
 
 	useEffect(() => {
-		console.log(isOpened);
-
 		if (isOpened) {
 			document.body.style.overflow = 'hidden';
 		} else {
@@ -62,8 +60,8 @@ export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, location,
 							photos={ photos }
 							fsqId={ fsqId }
 							category={ category[0] }
-							location={ location }
-							geocodes={ geocodes } />
+							geocodes={ geocodes }
+							country={ country } />
 					</article>
 				)
 			}

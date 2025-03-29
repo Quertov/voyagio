@@ -69,8 +69,8 @@ const Results: FC = () => {
 						photos={ photos }
 						fsqId={ place.fsq_id }
 						category={ place.categories }
-						location={ place.location }
-						geocodes={ place.geocodes.main } />
+						geocodes={ place.geocodes.main }
+						country={ place.location.country } />
 				)) }
 			</section>
 			<div className={ styles.pagination__buttons_container }>

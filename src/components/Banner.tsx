@@ -5,7 +5,7 @@ import { Manrope } from "next/font/google";
 import styles from '@/styles/Banner.module.css';
 import Image from "next/image";
 
-const RobotoSlab = Manrope({
+const manrope = Manrope({
 	variable: "--manrope-font",
 	weight: ['400', '500', '700'],
   style: ['normal'],
@@ -30,7 +30,7 @@ export const Banner: FC = () => {
 	}, []);
 
 	return (
-		<div className={ `${ styles.banner__container } ${RobotoSlab.variable} antialiased` }>
+		<div className={ `${ styles.banner__container } ${manrope.variable} antialiased` }>
 			<div className={ styles.banner__image_container }>
 				<div className={ styles.banner__text_container }>
 					<div className={ styles.banner__text_wrapper }>
