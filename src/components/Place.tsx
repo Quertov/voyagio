@@ -53,15 +53,16 @@ export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, geocodes,
 								height={28} />
 							{ category[0].name }
 						</span>
-						<PlacePopup
-							isOpened={ isOpened }
-							setIsOpened={ setIsOpened }
-							name={ name }
-							photos={ photos }
-							fsqId={ fsqId }
-							category={ category[0] }
-							geocodes={ geocodes }
-							country={ country } />
+						<PlacePopup placeDetails={{
+							isOpened,
+							setIsOpened,
+							name,
+							photos,
+							fsqId,
+							category: category[0],
+							geocodes,
+							country
+						}} />
 					</article>
 				)
 			}
