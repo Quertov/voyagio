@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC} from "react";
 import styles from '@/styles/PlacePopup.module.css';
-import { ICategory, ILocation } from "@/types/types";
 import { IGeocodes } from "@/types/types";
 import Image from "next/image";
 import { Manrope } from "next/font/google";
 import XIcon from '../../public/icons/x.svg';
 import clsx from "clsx";
 import Button from "./utils/Button";
-import useEmblaCarousel from "embla-carousel-react";
-import ArrowLeft from '@/icons/arrow_left.svg';
-import ArrowRight from '@/icons/arrow_right.svg';
+
+// components
+import { PlaceTips } from "./PlaceTips";
+import { PlacePhotos } from "./PlacePhotos";
 
 const manrope = Manrope({
 	variable: "--manrope-font",
@@ -25,18 +25,13 @@ interface PlacePopupProps {
 		name: string;
 		photos: { [key: string]: string[] };
 		fsqId: string;
-		category: ICategory;
 		geocodes: IGeocodes;
 		country: string;
 	};
 }
 
 export const PlacePopup: FC<PlacePopupProps> = ({ placeDetails }) => {
-	const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-	const { isOpened, setIsOpened, name, photos, fsqId, category, geocodes, country  } = placeDetails;
-
-	const scrollPrev = () => ( emblaApi && emblaApi.scrollPrev() );
-	const scrollNext = () => ( emblaApi && emblaApi.scrollNext() );
+	const { isOpened, setIsOpened, name, photos, fsqId, geocodes, country  } = placeDetails;
 
 	return (
 		<section
@@ -58,23 +53,7 @@ export const PlacePopup: FC<PlacePopupProps> = ({ placeDetails }) => {
 						<Image alt="Логотип" src="/logo.png" width={115} height={31} />
 					</div>
 					<div className={ styles.place__info }>
-						<div className={ styles.embla } ref={ emblaRef }>
-								<div className={ styles.embla__container }>
-									{photos[fsqId].map((photo: string, i: number) => (
-										<div className={ styles.embla__slide } key={i}>
-											<Image alt="Фото місця" src={ photo } width={500} height={300} className="rounded-2xl" />
-										</div>
-									))}
-								</div>
-							</div>
-							<div className={ styles.embla__navigation_container }>
-								<button className={ styles.embla__prev } onClick={ scrollPrev }>
-									<Image alt="" src={ArrowLeft} width={30} height={30} />
-								</button>
-								<button className={ styles.embla__next } onClick={ scrollNext }>
-									<Image alt="" src={ArrowRight} width={30} height={30} />
-								</button>
-							</div>
+						<PlacePhotos photos={ photos } fsqId={ fsqId } />
 						<div className={ styles.place__name_container }>
 							<Image alt="Країна" src={ `https://flagsapi.com/${country}/flat/64.png` } width={44} height={44} />
 							<h1 className={ styles.place__name }>{ name }</h1>
@@ -82,9 +61,7 @@ export const PlacePopup: FC<PlacePopupProps> = ({ placeDetails }) => {
 						<div className={ styles.place__btn_container }>
 							<Button isLink href={ `https://www.google.com.ua/maps/@${geocodes.latitude},${geocodes.longitude},17z` }>Відкрити в Google Maps</Button>
 						</div>
-						<div className={ styles.place__tips_container }>
-							<h2 className={ styles.place__tips_title }>Відгуки</h2>
-						</div>
+						<PlaceTips fsqId={ fsqId } />
 					</div>
 				</div>
 			</div>

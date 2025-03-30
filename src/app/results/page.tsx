@@ -35,7 +35,6 @@ const Results: FC = () => {
 	const totalPages = data?.results ? Math.ceil(data.results.length / ITEMS_PER_PAGE) : 1;
 
 	const { fetchPhotos } = usePhotos();
-
 	const [photos, setPhotos] = useState<{ [key: string]: string[] }>({});
 
 	useEffect(() => {
@@ -53,7 +52,7 @@ const Results: FC = () => {
 		}
 
 		loadPhotos();
-	}, [data, fetchPhotos]);
+	}, [data]);
 
 	if (isLoading) return <Loader />;
 	if (error || !data || !data.results?.length) return <NoResults query={ query } />;

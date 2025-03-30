@@ -59,7 +59,6 @@ export const Place: FC<PlaceProps> = ({ name, photos, fsqId, category, geocodes,
 							name,
 							photos,
 							fsqId,
-							category: category[0],
 							geocodes,
 							country
 						}} />

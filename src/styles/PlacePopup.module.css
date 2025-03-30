@@ -67,7 +67,7 @@
 	@apply
 	flex
 	flex-col
-	gap-[40px]
+	gap-[20px]
 	;
 }
 
@@ -94,74 +94,5 @@
 .place__info img {
 	@apply
 	select-none
-	;
-}
-
-.embla {
-	@apply
-	overflow-hidden
-	flex
-	justify-center
-	items-center
-	w-full
-	;
-}
-
-.embla__container {
-	@apply
-	flex
-	gap-[10px]
-	;
-}
-
-.embla__slide {
-	@apply
-	flex-shrink-0
-	w-full
-	flex
-	justify-center
-	items-center
-	;
-}
-
-.embla__navigation_container {
-	@apply
-	flex
-	w-full
-	justify-center
-	mt-[20px]
-	gap-[50px]
-	;
-}
-
-.embla__prev,
-.embla__next {
-	@apply
-	w-[50px]
-	h-[50px]
-	bg-accent
-	flex
-	justify-center
-	items-center
-	rounded-full
-	;
-}
-
-.embla__prev:active,
-.embla__next:active {
-	@apply
-	opacity-70
-	;
-}
-
-.embla__prev img {
-	@apply
-	ml-[10px]
-	;
-}
-
-.embla__next img {
-	@apply
-	ml-[4px]
 	;
 }

@@ -42,7 +42,7 @@ const Search: FC = () => {
 		}
 
 		try {
-			const places = fetchPlaces(categoryId[category], query);
+			fetchPlaces(categoryId[category], query);
 		} catch (error) {
 			console.log(error);
 		}

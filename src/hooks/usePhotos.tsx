@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallback } from "react";
 
 export const usePhotos = () => {
@@ -7,7 +5,7 @@ export const usePhotos = () => {
 		try {
 			const response = await fetch(`https://api.foursquare.com/v3/places/${fsqId}/photos`, {
 				headers: {
-					'Authorization': 'fsq3liNFQENwTSKJG93ZtjYahs290ODBxw442fDtuSdlS2s=',
+					'Authorization': process.env.NEXT_PUBLIC_API_KEY ? process.env.NEXT_PUBLIC_API_KEY : '',
 				}
 			});
 			const data = await response.json();
