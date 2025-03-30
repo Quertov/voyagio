@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from "react";
 import styles from "@/styles/results/Place.module.css";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-import { ICategory, ILocation, IGeocodes } from "@/types/types";
+import { ICategory, IGeocodes } from "@/types/types";
 import { PlacePopup } from "./PlacePopup";
 
 interface PlaceProps {
