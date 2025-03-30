@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     return config;
   },
   images: {
-    domains: ['fastly.4sqi.net', 'ss3.4sqi.net']
+    domains: ['fastly.4sqi.net', 'ss3.4sqi.net', 'flagsapi.com']
   }
 };
 

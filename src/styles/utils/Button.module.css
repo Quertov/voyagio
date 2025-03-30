@@ -1,9 +1,12 @@
 .button {
 	@apply
 	text-white
-	h-[33px]
 	bg-accent
 	rounded-md
-	font-medium
+	font-bold
+	text-[20px]
+	cursor-pointer
+	px-[15px]
+	py-[10px]
 	;
 }

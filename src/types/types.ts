@@ -62,3 +62,9 @@ export interface ICity {
 	name: string,
 	country_name: string
 };
+
+export interface ITip {
+	id: string,
+	created_at: string,
+	text: string
+};

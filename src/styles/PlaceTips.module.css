@@ -1,0 +1,54 @@
+.tips__container {
+	@apply
+	mt-[10px]
+	px-[30px]
+	;
+}
+
+.tips__title_container {
+	@apply
+	w-full
+	flex
+	justify-center
+	mb-[10px]
+	;
+}
+
+.tips__title {
+	@apply
+	text-[28px]
+	font-bold
+	;
+}
+
+.tips__list {
+	@apply
+	list-disc
+	flex
+	flex-col
+	gap-[15px]
+	;
+}
+
+.tip__text {
+	@apply
+	font-medium
+	text-[18px]
+	mb-[5px]
+	;
+}
+
+.tip__date {
+	@apply
+	italic
+	;
+}
+
+.tip__line {
+	@apply
+	w-full
+	bg-black
+	h-[2px]
+	mt-[5px]
+	;
+}
