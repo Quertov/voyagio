@@ -59,7 +59,7 @@ const Results: FC = () => {
 		
 	return (
 		<div className={ styles.root }>
-			<h1 className={ styles.results__title }>{ categoryName[category] } за запитом: &quot;{ query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }&quot;</h1>
+			<h1 className={ styles.results__title }>{ categoryName[category] } за запитом: <strong>&quot;{ query.charAt(0).toUpperCase() + query.slice(1).toLowerCase() }&quot;</strong></h1>
 			<section className={ styles.results__places_grid }>
 				{ currentItems?.map((place: IPlace, i) => (
 					<Place

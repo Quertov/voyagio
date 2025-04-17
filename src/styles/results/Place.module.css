@@ -4,6 +4,12 @@
 	flex
 	items-center
 	flex-col
+	border-2
+	border-gray-300
+	px-[40px]
+	pt-[40px]
+	pb-[20px]
+	rounded-xl
 	;
 }
 

@@ -22,7 +22,7 @@ export const PlaceTips: FC<PlaceTipsProps> = ({ fsqId }) => {
 	return (
 		<div className={ styles.tips__container }>
 			<div className={ styles.tips__title_container }>
-				<h1 className={ styles.tips__title }>Відгуки</h1>
+				<h1 className={ styles.tips__title }>{ !tips.length ? 'Відгуків немає' : 'Відгуки' }</h1>
 			</div>
 			<ul className={ styles.tips__list }>
 				{tips.map((tip: ITip) => (
